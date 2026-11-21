@@ -7,6 +7,7 @@ import Data.Map qualified as Map
 import Data.Set (Set)
 import Data.Set qualified as Set
 import Guesser (PartialOrdering (..), Result (..))
+import Main.Utf8 (withUtf8)
 import Room
 import RoomList (allRooms)
 import System.CPUTime (getCPUTime)
@@ -175,7 +176,7 @@ gameLoop ans guessNum maxGuesses
                       else gameLoop ans (guessNum + 1) maxGuesses
 
 main :: IO ()
-main = do
+main = withUtf8 $ do
   opts <- getArgs >>= parseArgs
   ans <- pickRandomRoom allRooms
   putStrLn ("Blue Prince Room Guesser (" ++ show (optMaxGuesses opts) ++ " guesses)")
