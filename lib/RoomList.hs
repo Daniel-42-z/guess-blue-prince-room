@@ -773,7 +773,7 @@ secretPassage :: Room
 secretPassage =
   Room
     { name = "Secret Passage",
-      shape = DeadEnd,
+      shape = Straight,
       colors = singleton Hallway,
       gemCost = 1,
       poolCat = Starting,

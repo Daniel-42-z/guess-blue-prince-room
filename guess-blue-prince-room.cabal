@@ -97,6 +97,7 @@ executable guess-blue-prince-room
     -- Other library packages from which modules are imported.
     build-depends:
         , base                    ^>=4.20.2.0
+        , containers
         , guess-blue-prince-room
 
     -- Directories containing source files.
