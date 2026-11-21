@@ -44,21 +44,23 @@ jobs:
         run: cabal update
 
       - name: Run tests
-        run: cabal test
+        run: cabal test --disable-executable-dynamic
 
       - name: Build executable
-        run: cabal build exe:guess-blue-prince-room
+        run: cabal build exe:guess-blue-prince-room --disable-executable-dynamic
 
       - name: Package release asset
         shell: bash
         run: |
           mkdir -p release-assets
-          BIN_PATH="$(cabal list-bin exe:guess-blue-prince-room)"
+          BIN_PATH="$(cabal list-bin --disable-executable-dynamic exe:guess-blue-prince-room)"
           if [ "${{ matrix.archive }}" = "exe" ]; then
             cp "$BIN_PATH" "release-assets/guess-blue-prince-room-${{ matrix.platform }}.exe"
+            strip "release-assets/guess-blue-prince-room-${{ matrix.platform }}.exe"
           else
             BIN_DIR="$(dirname "$BIN_PATH")"
             BIN_NAME="$(basename "$BIN_PATH")"
+            strip "$BIN_PATH"
             tar -czf "release-assets/guess-blue-prince-room-${{ matrix.platform }}.tar.gz" -C "$BIN_DIR" "$BIN_NAME"
           fi
 
