@@ -39,42 +39,135 @@
 }
 
 :root {
-  --adw-bg: #fafafa;
-  --adw-card-bg: #ffffff;
-  --adw-header-bg: #ebebeb;
-  --adw-border: rgba(0, 0, 0, 0.14);
-  --adw-fg: #24292f;
-  --adw-fg-muted: rgba(36, 41, 47, 0.72);
-  --adw-hover: rgba(0, 0, 0, 0.05);
-  --adw-popover-bg: #ffffff;
-  --adw-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+  color-scheme: light dark;
 
-  --adw-blue-bg: #1c71d8;
+  --adw-bg-light: #fafafa;
+  --adw-bg-dark: #242424;
+  --adw-card-bg-light: #ffffff;
+  --adw-card-bg-dark: #303030;
+  --adw-header-bg-light: #ebebeb;
+  --adw-header-bg-dark: #2e2e2e;
+  --adw-border-light: rgba(0, 0, 0, 0.14);
+  --adw-border-dark: rgba(255, 255, 255, 0.15);
+  --adw-fg-light: #24292f;
+  --adw-fg-dark: #f3f3f1;
+  --adw-fg-muted-light: rgba(36, 41, 47, 0.72);
+  --adw-fg-muted-dark: rgba(243, 243, 241, 0.72);
+  --adw-hover-light: rgba(0, 0, 0, 0.05);
+  --adw-hover-dark: rgba(255, 255, 255, 0.07);
+  --adw-popover-bg-light: #ffffff;
+  --adw-popover-bg-dark: #3a3a3a;
+  --adw-shadow-light: 0 4px 16px rgba(0, 0, 0, 0.14);
+  --adw-shadow-dark: 0 6px 24px rgba(0, 0, 0, 0.5);
+
+  --adw-blue-bg-light: #1c71d8;
+  --adw-blue-bg-dark: #3584e4;
   --adw-blue-fg: #ffffff;
-  --adw-yellow-bg: #e5a50a;
-  --adw-yellow-fg: #1e1e1e;
-  --adw-red-bg: #c01c28;
+  --adw-yellow-bg-light: #e5a50a;
+  --adw-yellow-bg-dark: #cd9309;
+  --adw-yellow-fg-light: #1e1e1e;
+  --adw-yellow-fg-dark: #111111;
+  --adw-red-bg-light: #c01c28;
+  --adw-red-bg-dark: #e01b24;
   --adw-red-fg: #ffffff;
+
+  --adw-bg: var(--adw-bg-light);
+  --adw-card-bg: var(--adw-card-bg-light);
+  --adw-header-bg: var(--adw-header-bg-light);
+  --adw-border: var(--adw-border-light);
+  --adw-fg: var(--adw-fg-light);
+  --adw-fg-muted: var(--adw-fg-muted-light);
+  --adw-hover: var(--adw-hover-light);
+  --adw-popover-bg: var(--adw-popover-bg-light);
+  --adw-shadow: var(--adw-shadow-light);
+  --adw-blue-bg: var(--adw-blue-bg-light);
+  --adw-yellow-bg: var(--adw-yellow-bg-light);
+  --adw-yellow-fg: var(--adw-yellow-fg-light);
+  --adw-red-bg: var(--adw-red-bg-light);
+
+  &:has(> head > meta[name="color-scheme"][content="dark"]) {
+    color-scheme: dark;
+  }
+
+  &:has(> head > meta[name="color-scheme"][content="light"]) {
+    color-scheme: light;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --adw-bg: var(--adw-bg-dark);
+    --adw-card-bg: var(--adw-card-bg-dark);
+    --adw-header-bg: var(--adw-header-bg-dark);
+    --adw-border: var(--adw-border-dark);
+    --adw-fg: var(--adw-fg-dark);
+    --adw-fg-muted: var(--adw-fg-muted-dark);
+    --adw-hover: var(--adw-hover-dark);
+    --adw-popover-bg: var(--adw-popover-bg-dark);
+    --adw-shadow: var(--adw-shadow-dark);
+    --adw-blue-bg: var(--adw-blue-bg-dark);
+    --adw-yellow-bg: var(--adw-yellow-bg-dark);
+    --adw-yellow-fg: var(--adw-yellow-fg-dark);
+    --adw-red-bg: var(--adw-red-bg-dark);
+  }
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --adw-bg: #242424;
-  --adw-card-bg: #303030;
-  --adw-header-bg: #2e2e2e;
-  --adw-border: rgba(255, 255, 255, 0.15);
-  --adw-fg: #f3f3f1;
-  --adw-fg-muted: rgba(243, 243, 241, 0.72);
-  --adw-hover: rgba(255, 255, 255, 0.07);
-  --adw-popover-bg: #3a3a3a;
-  --adw-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+  --adw-bg: var(--adw-bg-dark);
+  --adw-card-bg: var(--adw-card-bg-dark);
+  --adw-header-bg: var(--adw-header-bg-dark);
+  --adw-border: var(--adw-border-dark);
+  --adw-fg: var(--adw-fg-dark);
+  --adw-fg-muted: var(--adw-fg-muted-dark);
+  --adw-hover: var(--adw-hover-dark);
+  --adw-popover-bg: var(--adw-popover-bg-dark);
+  --adw-shadow: var(--adw-shadow-dark);
+  --adw-blue-bg: var(--adw-blue-bg-dark);
+  --adw-yellow-bg: var(--adw-yellow-bg-dark);
+  --adw-yellow-fg: var(--adw-yellow-fg-dark);
+  --adw-red-bg: var(--adw-red-bg-dark);
+}
 
-  --adw-blue-bg: #3584e4;
-  --adw-blue-fg: #ffffff;
-  --adw-yellow-bg: #cd9309;
-  --adw-yellow-fg: #111111;
-  --adw-red-bg: #e01b24;
-  --adw-red-fg: #ffffff;
+@supports (color: light-dark(white, black)) {
+  :root {
+    --adw-bg: light-dark(var(--adw-bg-light), var(--adw-bg-dark));
+    --adw-card-bg: light-dark(var(--adw-card-bg-light), var(--adw-card-bg-dark));
+    --adw-header-bg: light-dark(var(--adw-header-bg-light), var(--adw-header-bg-dark));
+    --adw-border: light-dark(var(--adw-border-light), var(--adw-border-dark));
+    --adw-fg: light-dark(var(--adw-fg-light), var(--adw-fg-dark));
+    --adw-fg-muted: light-dark(var(--adw-fg-muted-light), var(--adw-fg-muted-dark));
+    --adw-hover: light-dark(var(--adw-hover-light), var(--adw-hover-dark));
+    --adw-popover-bg: light-dark(var(--adw-popover-bg-light), var(--adw-popover-bg-dark));
+    --adw-shadow: light-dark(var(--adw-shadow-light), var(--adw-shadow-dark));
+    --adw-blue-bg: light-dark(var(--adw-blue-bg-light), var(--adw-blue-bg-dark));
+    --adw-yellow-bg: light-dark(var(--adw-yellow-bg-light), var(--adw-yellow-bg-dark));
+    --adw-yellow-fg: light-dark(var(--adw-yellow-fg-light), var(--adw-yellow-fg-dark));
+    --adw-red-bg: light-dark(var(--adw-red-bg-light), var(--adw-red-bg-dark));
+  }
+}
+
+.theme-icon-to-light {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not(:has(> head > meta[name="color-scheme"][content="light"])) .theme-icon-to-dark {
+    display: none;
+  }
+  :root:not([data-theme="light"]):not(:has(> head > meta[name="color-scheme"][content="light"])) .theme-icon-to-light {
+    display: inline;
+  }
+}
+
+:root[data-theme="dark"] .theme-icon-to-dark,
+:root:has(> head > meta[name="color-scheme"][content="dark"]) .theme-icon-to-dark {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-icon-to-light,
+:root:has(> head > meta[name="color-scheme"][content="dark"]) .theme-icon-to-light {
+  display: inline;
 }
 
 html,

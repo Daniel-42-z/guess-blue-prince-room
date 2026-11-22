@@ -35,7 +35,6 @@ data Model = Model
     mError :: Maybe MisoString,
     mStatus :: GameStatus,
     mMaxGuesses :: Int,
-    mDarkMode :: Bool,
     mShowRooms :: Bool,
     mRoomFilter :: MisoString
   }
@@ -48,7 +47,6 @@ data Action
   | GiveUp
   | NewGame
   | SetAnswer Room
-  | ToggleTheme
   | ToggleRooms
   | UpdateRoomFilter MisoString
   | PickRoomFromModal MisoString
@@ -76,7 +74,6 @@ initialModel ans =
       mError = Nothing,
       mStatus = Playing,
       mMaxGuesses = defaultMaxGuesses,
-      mDarkMode = False,
       mShowRooms = False,
       mRoomFilter = ""
     }
@@ -122,12 +119,7 @@ updateModel = \case
   NewGame ->
     io (SetAnswer <$> pickRandomRoom)
   SetAnswer ans ->
-    modify $ \m ->
-      (initialModel ans)
-        { mDarkMode = mDarkMode m
-        }
-  ToggleTheme ->
-    modify $ \m -> m {mDarkMode = not (mDarkMode m)}
+    modify $ \_ -> initialModel ans
   ToggleRooms ->
     modify $ \m -> m {mShowRooms = not (mShowRooms m), mRoomFilter = ""}
   UpdateRoomFilter txt ->
@@ -168,8 +160,7 @@ suggestRooms input =
 viewModel :: Model -> View c p Model Action
 viewModel m =
   H.div_
-    [ P.class_ "app-shell mie",
-      textProp "data-theme" (if mDarkMode m then "dark" else "light")
+    [ P.class_ "app-shell mie"
     ]
     [ viewHeaderBar m,
       H.main_
@@ -215,11 +206,14 @@ viewHeaderBar m =
         [P.class_ "right"]
         [ H.button_
             [ P.type_ "button",
-              P.class_ "mie button",
+              P.id_ "theme-toggle",
+              P.class_ "mie button theme-toggle-btn",
               P.title_ "Toggle light/dark theme",
-              E.onClick ToggleTheme
+              textProp "aria-label" "Toggle light/dark theme"
             ]
-            [text (if mDarkMode m then "☀" else "🌙")],
+            [ H.span_ [P.class_ "theme-icon-to-dark", textProp "aria-hidden" "true"] [text "🌙"],
+              H.span_ [P.class_ "theme-icon-to-light", textProp "aria-hidden" "true"] [text "☀"]
+            ],
           H.button_
             [ P.type_ "button",
               P.class_ "mie button",

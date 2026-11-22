@@ -3,6 +3,26 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      (function () {
+        var stored = null;
+        try {
+          stored = localStorage.getItem("color-scheme");
+        } catch (e) {}
+        var valid = stored === "light" || stored === "dark" ? stored : null;
+        var meta = document.querySelector('meta[name="color-scheme"]');
+        if (meta) {
+          meta.content = valid || "light dark";
+        }
+        var isDark =
+          valid === "dark" ||
+          (valid !== "light" &&
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.dataset.theme = isDark ? "dark" : "light";
+      })();
+    </script>
     <title>Blue Prince Room Guesser</title>
     <link rel="stylesheet" href="./mielo.min.css" />
     <link rel="stylesheet" href="./custom.css" />

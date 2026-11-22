@@ -1202,7 +1202,7 @@ casino =
       gemCost = 2,
       poolCat = Studio,
       specialCats = empty,
-      resources = resourceGains [(Coins, Mixed)]
+      resources = resourceGains $ (Coins, Mixed) : (zip [Steps, Gems, Keys, Other] (repeat VarGain))
     }
 
 -- ============================================================================
