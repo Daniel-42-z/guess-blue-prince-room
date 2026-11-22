@@ -437,19 +437,31 @@ viewTableHeader =
 
 viewHelpHeader :: MisoString -> MisoString -> [MisoString] -> View c p Model Action
 viewHelpHeader label title options =
-  H.th_
-    [P.class_ "help-th", P.tabindex_ "0"]
-    [ H.span_
-        [P.class_ "help-label"]
-        [ text label,
-          H.span_ [P.class_ "help-badge"] [text "?"]
-        ],
-      H.div_
-        [P.class_ "help-popover"]
-        [ H.span_ [P.class_ "help-popover-title"] [text title],
-          text (ms (intercalate ", " (map fromMisoString options)))
+  let popoverId = ms ("help-" ++ map toLower (fromMisoString label))
+   in H.th_
+        [P.class_ "help-th"]
+        [ H.span_
+            [P.class_ "help-label"]
+            [ text label,
+              H.button_
+                [ P.type_ "button",
+                  P.class_ "help-badge",
+                  textProp "interestfor" popoverId,
+                  textProp "popovertarget" popoverId,
+                  textProp "popovertargetaction" "show",
+                  textProp "aria-label" ("More about " <> label)
+                ]
+                [text "?"],
+              H.div_
+                [ P.id_ popoverId,
+                  textProp "popover" "hint",
+                  P.class_ "help-popover"
+                ]
+                [ H.span_ [P.class_ "help-popover-title"] [text title],
+                  text (ms (intercalate ", " (map fromMisoString options)))
+                ]
+            ]
         ]
-    ]
 
 viewGuessRow :: Room -> RoomGuessWithResult -> View c p Model Action
 viewGuessRow guess res =

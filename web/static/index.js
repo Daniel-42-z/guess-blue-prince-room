@@ -57,6 +57,132 @@ document.addEventListener("click", (e) => {
   applyColorScheme();
 });
 
+const ownedInterestTriggers = new WeakSet();
+
+function normalizeHintText(text) {
+  return (text || "").replace(/\s+/g, " ").trim();
+}
+
+function getAccessibleName(el) {
+  const labelledBy = el.getAttribute("aria-labelledby");
+  if (labelledBy) {
+    return normalizeHintText(
+      labelledBy
+        .split(/\s+/)
+        .map((id) => document.getElementById(id)?.textContent || "")
+        .join(" ")
+    );
+  }
+  const ariaLabel = el.getAttribute("aria-label");
+  if (ariaLabel) {
+    return normalizeHintText(ariaLabel);
+  }
+  const textWithAlts = Array.from(el.childNodes)
+    .map((node) => {
+      if (node.nodeType === Node.TEXT_NODE) return node.textContent || "";
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        if (node.tagName === "IMG") return node.getAttribute("alt") || "";
+        return node.textContent || "";
+      }
+      return "";
+    })
+    .join(" ");
+  const normalizedText = normalizeHintText(textWithAlts);
+  if (normalizedText) return normalizedText;
+  return normalizeHintText(el.getAttribute("title"));
+}
+
+function isPopoverOpen(el) {
+  try {
+    return el.matches(":popover-open") || el.classList.contains(":popover-open");
+  } catch {
+    return el.classList.contains(":popover-open");
+  }
+}
+
+function wireInterestHints(root = document) {
+  const triggers = root.querySelectorAll?.("[interestfor]") || [];
+  for (const trigger of triggers) {
+    const targetId = trigger.getAttribute("interestfor");
+    if (!targetId) continue;
+    const hint = document.getElementById(targetId);
+    if (!hint || hint.getAttribute("popover") !== "hint") continue;
+
+    const hintText = normalizeHintText(hint.textContent);
+    const triggerName = getAccessibleName(trigger);
+    if (hintText && triggerName === hintText) continue;
+
+    if (!hint.hasAttribute("role")) {
+      hint.setAttribute("role", "tooltip");
+    }
+
+    if (!triggerName) {
+      if (!trigger.hasAttribute("aria-labelledby")) {
+        trigger.setAttribute("aria-labelledby", targetId);
+      }
+    } else {
+      const activatesHint =
+        trigger.getAttribute("popovertarget") === targetId ||
+        trigger.getAttribute("commandfor") === targetId;
+      if (activatesHint) {
+        if (!trigger.hasAttribute("aria-expanded") || ownedInterestTriggers.has(trigger)) {
+          ownedInterestTriggers.add(trigger);
+          trigger.setAttribute("aria-expanded", String(isPopoverOpen(hint)));
+        }
+      } else if (!trigger.hasAttribute("aria-describedby")) {
+        trigger.setAttribute("aria-describedby", targetId);
+      }
+    }
+  }
+}
+
+document.addEventListener(
+  "toggle",
+  ({ target, newState }) => {
+    if (!(target instanceof HTMLElement) || !target.id) return;
+    const open = newState === "open";
+    const triggers = document.querySelectorAll(`[interestfor="${CSS.escape(target.id)}"]`);
+    for (const trigger of triggers) {
+      if (ownedInterestTriggers.has(trigger)) {
+        trigger.setAttribute("aria-expanded", String(open));
+      }
+    }
+  },
+  true
+);
+
+wireInterestHints();
+new MutationObserver(() => wireInterestHints()).observe(document.body, {
+  childList: true,
+  subtree: true,
+});
+
+if (!Object.hasOwn(HTMLElement.prototype, "popover")) {
+  await import("https://unpkg.com/@oddbird/popover-polyfill@latest/dist/popover.min.js");
+}
+
+const hintProbe = document.createElement("div");
+hintProbe.popover = "hint";
+if (hintProbe.popover !== "hint") {
+  document.addEventListener(
+    "beforetoggle",
+    ({ target, newState }) => {
+      const toggletip =
+        target instanceof HTMLElement &&
+        target.getAttribute("popover") === "hint" &&
+        document.querySelector(`[popovertarget="${CSS.escape(target.id)}"]`);
+      if (newState === "open" && toggletip) {
+        target.popover = "auto";
+      }
+    },
+    true
+  );
+}
+
+if (!("interestForElement" in HTMLButtonElement.prototype)) {
+  await import("https://unpkg.com/interestfor@latest");
+}
+
 const args = [];
 const env = ["GHCRTS=-H64m"];
 const fds = [

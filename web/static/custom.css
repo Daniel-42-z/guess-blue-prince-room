@@ -520,12 +520,7 @@ input,
   cursor: help;
 }
 
-/* Help hover-over on Pool & Special headers */
-.help-th {
-  position: relative;
-  cursor: help;
-}
-
+/* Help toggletips on Pool & Special headers */
 .help-label {
   display: inline-flex;
   align-items: center;
@@ -533,32 +528,56 @@ input,
 }
 
 .help-badge {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 17px;
   height: 17px;
+  padding: 0;
   border-radius: 50%;
+  font-family: inherit;
   font-size: 11px;
   font-weight: 700;
+  line-height: 1;
+  background: transparent;
   border: 1px solid var(--adw-border);
   color: var(--adw-fg-muted);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* Expand mobile tap target without altering the 17px badge visual */
+.help-badge::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+}
+
+.help-badge:hover,
+.help-badge:focus-visible,
+.help-badge:is(:interest-source, .interest-source) {
+  color: var(--adw-fg);
+  border-color: var(--adw-fg-muted);
+  background: var(--adw-hover);
+}
+
+[interestfor] {
+  --interest-delay-start: 0.15s;
+  interest-delay-start: var(--interest-delay-start);
+  --interest-delay-end: 0.1s;
+  interest-delay-end: var(--interest-delay-end);
 }
 
 .help-popover {
-  display: none;
-  position: absolute;
-  bottom: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
   min-width: 230px;
+  max-width: min(300px, calc(100vw - 24px));
   padding: 10px 14px;
   border-radius: 10px;
   background: var(--adw-popover-bg);
   color: var(--adw-fg);
   border: 1px solid var(--adw-border);
   box-shadow: var(--adw-shadow);
-  z-index: 50;
   text-align: left;
   white-space: normal;
   font-weight: 400;
@@ -566,14 +585,22 @@ input,
   line-height: 1.45;
 }
 
-.help-popover-title {
-  font-weight: 700;
-  margin-bottom: 4px;
+[popover].help-popover:is(:popover-open, .\:popover-open) {
   display: block;
 }
 
-.help-th:hover .help-popover,
-.help-th:focus-within .help-popover {
+@supports (position-area: block-start) {
+  [popover].help-popover {
+    inset: auto;
+    margin: 0;
+    position-area: block-start;
+    position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+  }
+}
+
+.help-popover-title {
+  font-weight: 700;
+  margin-bottom: 4px;
   display: block;
 }
 
