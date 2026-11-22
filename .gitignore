@@ -1,1 +1,4 @@
 /dist-newstyle/
+/ghc-9.10.3-x86_64-unknown-mingw32/
+**.exe
+/dist-win/

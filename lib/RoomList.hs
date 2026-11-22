@@ -67,7 +67,7 @@ parlor =
       shape = Corner,
       colors = singleton Blue,
       gemCost = 0,
-      poolCat = Starting,
+      poolCat = Upgradable,
       specialCats = singleton Puzzle,
       resources = resourceGains [(Gems, Fixed 2)]
     }
@@ -80,7 +80,7 @@ billiardRoom =
       shape = Corner,
       colors = singleton Blue,
       gemCost = 0,
-      poolCat = Starting,
+      poolCat = Upgradable,
       specialCats = singleton Puzzle,
       resources = resourceGains [(Keys, Fixed 2)]
     }
@@ -119,7 +119,7 @@ closet =
       shape = DeadEnd,
       colors = singleton Blue,
       gemCost = 0,
-      poolCat = Starting,
+      poolCat = Upgradable,
       specialCats = empty,
       resources = resourceGains [(Other, Fixed 2)]
     }
@@ -158,7 +158,7 @@ storeRoom =
       shape = DeadEnd,
       colors = singleton Blue,
       gemCost = 0,
-      poolCat = Starting,
+      poolCat = Upgradable,
       specialCats = empty,
       resources = resourceGains [(Coins, Fixed 1), (Gems, Fixed 1), (Keys, Fixed 1)]
     }
@@ -171,7 +171,7 @@ nook =
       shape = Corner,
       colors = singleton Blue,
       gemCost = 0,
-      poolCat = Starting,
+      poolCat = Upgradable,
       specialCats = empty,
       resources = resourceGains [(Keys, Fixed 1)]
     }
@@ -509,7 +509,7 @@ mailRoom =
       shape = DeadEnd,
       colors = singleton Blue,
       gemCost = 0,
-      poolCat = Starting,
+      poolCat = Upgradable,
       specialCats = singleton Tomorrow,
       resources = resourceGains [(Other, VarGain)]
     }
@@ -574,7 +574,7 @@ aquarium =
       shape = TShaped,
       colors = fromList [Blue, Red, GreenRoom, Hallway, Bedroom, Shop, Blackprint],
       gemCost = 1,
-      poolCat = Starting,
+      poolCat = Upgradable,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -628,7 +628,7 @@ boudoir =
       shape = Corner,
       colors = singleton Bedroom,
       gemCost = 0,
-      poolCat = Starting,
+      poolCat = Upgradable,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -640,7 +640,7 @@ guestBedroom =
       shape = DeadEnd,
       colors = singleton Bedroom,
       gemCost = 0,
-      poolCat = Starting,
+      poolCat = Upgradable,
       specialCats = empty,
       resources = resourceGains [(Steps, Fixed 10)]
     }
@@ -652,7 +652,7 @@ nursery =
       shape = DeadEnd,
       colors = singleton Bedroom,
       gemCost = 1,
-      poolCat = Starting,
+      poolCat = Upgradable,
       specialCats = singleton Drafting,
       resources = resourceGains [(Steps, VarGain), (Other, Fixed 1)]
     }
@@ -676,7 +676,7 @@ bunkRoom =
       shape = DeadEnd,
       colors = singleton Bedroom,
       gemCost = 0,
-      poolCat = Starting,
+      poolCat = Upgradable,
       specialCats = empty,
       resources = resourceGains [(Other, Fixed 2)]
     }
@@ -716,7 +716,7 @@ hallway =
       shape = TShaped,
       colors = singleton Hallway,
       gemCost = 0,
-      poolCat = Starting,
+      poolCat = Upgradable,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -840,7 +840,7 @@ courtyard =
       shape = TShaped,
       colors = singleton GreenRoom,
       gemCost = 1,
-      poolCat = Starting,
+      poolCat = Upgradable,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -852,7 +852,7 @@ cloister =
       shape = Crossroad,
       colors = singleton GreenRoom,
       gemCost = 3,
-      poolCat = Starting,
+      poolCat = Upgradable,
       specialCats = empty,
       resources = noResourceGain
     }

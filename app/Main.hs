@@ -1,3 +1,5 @@
+{-# LANGUAGE CPP #-}
+
 module Main (main) where
 
 import Control.Exception (IOException, catch)
@@ -6,16 +8,39 @@ import Data.List (intercalate, isInfixOf)
 import Data.Map qualified as Map
 import Data.Set (Set)
 import Data.Set qualified as Set
+#ifdef mingw32_HOST_OS
+import Foreign.C.Types (CBool (..), CUInt (..))
+#endif
 import Guesser (PartialOrdering (..), Result (..))
-import Main.Utf8 (withUtf8)
 import Room
 import RoomList (allRooms)
 import System.CPUTime (getCPUTime)
 import System.Console.GetOpt
 import System.Environment (getArgs, getProgName)
 import System.Exit (exitFailure, exitSuccess)
-import System.IO (hFlush, hPutStrLn, stderr, stdout)
+import System.IO (hFlush, hPutStrLn, hSetEncoding, stderr, stdin, stdout, utf8)
 import Text.Read (readMaybe)
+
+#ifdef mingw32_HOST_OS
+foreign import stdcall unsafe "windows.h SetConsoleOutputCP"
+  c_SetConsoleOutputCP :: CUInt -> IO CBool
+
+foreign import stdcall unsafe "windows.h SetConsoleCP"
+  c_SetConsoleCP :: CUInt -> IO CBool
+#endif
+
+-- | Ensure standard handles (and the Windows console code page) use UTF-8 so
+-- Unicode glyphs such as colored squares and arrows do not fail to encode.
+initUtf8Console :: IO ()
+initUtf8Console = do
+#ifdef mingw32_HOST_OS
+  let utf8CodePage = 65001
+  _ <- c_SetConsoleCP utf8CodePage
+  _ <- c_SetConsoleOutputCP utf8CodePage
+#endif
+  hSetEncoding stdin utf8
+  hSetEncoding stdout utf8
+  hSetEncoding stderr utf8
 
 defaultMaxGuesses :: Int
 defaultMaxGuesses = 8
@@ -176,7 +201,8 @@ gameLoop ans guessNum maxGuesses
                       else gameLoop ans (guessNum + 1) maxGuesses
 
 main :: IO ()
-main = withUtf8 $ do
+main = do
+  initUtf8Console
   opts <- getArgs >>= parseArgs
   ans <- pickRandomRoom allRooms
   putStrLn ("Blue Prince Room Guesser (" ++ show (optMaxGuesses opts) ++ " guesses)")

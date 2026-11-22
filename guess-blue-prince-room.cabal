@@ -99,7 +99,6 @@ executable guess-blue-prince-room
         , base                    ^>=4.20.2.0
         , containers
         , guess-blue-prince-room
-        , with-utf8
 
     -- Directories containing source files.
     hs-source-dirs:   app
@@ -134,4 +133,3 @@ test-suite guess-blue-prince-room-test
         , base                    ^>=4.20.2.0
         , containers
         , guess-blue-prince-room
-        , with-utf8

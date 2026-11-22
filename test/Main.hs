@@ -4,10 +4,10 @@ import Control.Monad (unless)
 import Data.Map qualified as Map
 import Data.Set qualified as Set
 import Guesser (GuessField (..), PartOrd (..), PartialOrdering (..), Result (..))
-import Main.Utf8 (withUtf8)
 import Room
 import RoomList
 import System.Exit (exitFailure)
+import System.IO (hSetEncoding, stderr, stdout, utf8)
 
 assert :: String -> Bool -> IO ()
 assert label ok = unless ok $ do
@@ -167,7 +167,9 @@ testSetPartialMatch = do
   assertEq "Set disjoint match" Wrong (check s1 s3)
 
 main :: IO ()
-main = withUtf8 $ do
+main = do
+  hSetEncoding stdout utf8
+  hSetEncoding stderr utf8
   testPosetAxioms
   testGainRules
   testRoomScenarios
