@@ -199,7 +199,7 @@ musicRoom =
       gemCost = 2,
       poolCat = Starting,
       specialCats = empty,
-      resources = resourceGains [(Keys, Fixed 2)]
+      resources = resourceGains [(Keys, Fixed 1), (Other, Fixed 1)]
     }
 
 -- 016
@@ -589,7 +589,7 @@ antechamber =
       gemCost = 0,
       poolCat = Starting,
       specialCats = singleton Permanent,
-      resources = resourceGains [(Keys, Fixed 1), (Other, Fixed 1)]
+      resources = resourceGains [(Other, Fixed 1)]
     }
 
 -- 046
@@ -602,7 +602,7 @@ room46 =
       gemCost = 0,
       poolCat = Starting,
       specialCats = singleton Permanent,
-      resources = noResourceGain
+      resources = resourceGains [(Other, Fixed 1)]
     }
 
 -- ============================================================================
@@ -942,7 +942,7 @@ locksmith =
       gemCost = 1,
       poolCat = Starting,
       specialCats = empty,
-      resources = resourceGains [(Keys, Purchase)]
+      resources = resourceGains [(Keys, Purchase), (Other, Purchase)]
     }
 
 showroom :: Room

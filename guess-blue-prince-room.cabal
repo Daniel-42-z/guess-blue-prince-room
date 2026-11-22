@@ -72,7 +72,7 @@ library
 
     -- Other library packages from which modules are imported.
     build-depends:
-        , base        ^>=4.20.2.0
+        , base        >=4.20 && <5
         , containers
 
     -- Directories containing source files.
@@ -96,7 +96,7 @@ executable guess-blue-prince-room
 
     -- Other library packages from which modules are imported.
     build-depends:
-        , base                    ^>=4.20.2.0
+        , base                    >=4.20 && <5
         , containers
         , guess-blue-prince-room
 
@@ -105,6 +105,25 @@ executable guess-blue-prince-room
 
     -- Base language which the package is written in.
     default-language: GHC2024
+
+executable guess-blue-prince-room-web
+    import:           warnings
+    main-is:          Main.hs
+    hs-source-dirs:   web
+    default-language: GHC2024
+    build-depends:
+        , base
+        , containers
+        , guess-blue-prince-room
+        , miso                    >=1.9
+        , random
+    if arch(wasm32)
+        ghc-options:
+            -no-hs-main
+            -optl-mexec-model=reactor
+            "-optl-Wl,--export=hs_start"
+            -O2
+        cpp-options: -DWASM
 
 test-suite guess-blue-prince-room-test
     -- Import common warning flags.
