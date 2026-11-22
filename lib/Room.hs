@@ -11,7 +11,7 @@ data Shape
   | Corner
   | TShaped
   | Crossroad
-  deriving (Eq, Show)
+  deriving (Eq, Ord, Show)
 
 instance GuessField Shape where
   check ans guess
@@ -27,7 +27,7 @@ instance GuessField Color
 
 type GemCost = Int
 
-data PoolCategory = Starting | Found | Outer | Studio | Upgradable deriving (Eq, Show)
+data PoolCategory = Starting | Found | Outer | Studio | Upgradable deriving (Eq, Ord, Show)
 
 instance GuessField PoolCategory
 
@@ -47,7 +47,7 @@ data Gain
   | SpreadGain
   | Purchase -- Only if able to gain this specific resource through making purchases. So coins can only be purchased from laundry room
   | Mixed -- Lost & found
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 instance Show Gain where
   show g = case g of
@@ -128,7 +128,7 @@ data RoomGuessWithResult = RoomGuessWithResult
     specialCatsWithResult :: (Set SpecialCategory, Result),
     resourcesWithResult :: Map Resource (Gain, Result, PartialOrdering)
   }
-  deriving (Eq)
+  deriving (Eq, Ord)
 
 guessRoom :: Room -> Room -> RoomGuessWithResult
 guessRoom ans guess =

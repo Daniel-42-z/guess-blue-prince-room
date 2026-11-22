@@ -6,6 +6,7 @@ import Data.Set qualified as Set
 import Guesser (GuessField (..), PartOrd (..), PartialOrdering (..), Result (..))
 import Room
 import RoomList
+import Solver (HintResult (..), bestHint, consistentCandidates)
 import System.Exit (exitFailure)
 import System.IO (hSetEncoding, stderr, stdout, utf8)
 
@@ -166,6 +167,49 @@ testSetPartialMatch = do
   assertEq "Set overlapping match" Partial (check s1 s2)
   assertEq "Set disjoint match" Wrong (check s1 s3)
 
+testSolver :: IO ()
+testSolver = do
+  -- Opening hint should be optimal (avg 259/110, max 4, guaranteed within 8)
+  case bestHint [] 8 of
+    Nothing -> assert "opening hint exists" False
+    Just h -> do
+      assertEq "opening candidate count" (length allRooms) (hintCandidateCount h)
+      assertEq "opening worst case" 4 (hintWorstCase h)
+      assert "opening guaranteed within 8" (hintGuaranteed h)
+      assert
+        ("opening expected guesses ~2.3545, got " ++ show (hintExpectedGuesses h))
+        (abs (hintExpectedGuesses h - (259.0 / 110.0)) < 1e-6)
+
+  -- Edge cases: budget 0 returns Nothing; budget 1 with 2 candidates is not guaranteed
+  assertEq "budget 0 returns Nothing" True (bestHint [] 0 == Nothing)
+  let pairHistory = [(r, guessRoom foundation r) | r <- [room46, drawingRoom]]
+      pairCands = consistentCandidates pairHistory
+  assert "pairHistory leaves Foundation and Entrance Hall" (length pairCands == 2)
+  case bestHint pairHistory 1 of
+    Nothing -> assert "budget 1 still suggests a candidate" False
+    Just h -> do
+      assert "budget 1 with 2 candidates is not guaranteed" (not (hintGuaranteed h))
+      assert "budget 1 suggests a remaining candidate" (hintRoom h `elem` pairCands)
+
+  -- Full end-to-end simulation across all 110 rooms without ever passing the answer to the solver
+  let playGame :: Room -> Int
+      playGame ans = go [] 1
+        where
+          go hist turn
+            | turn > 8 = error ("Solver exceeded 8 guesses for " ++ name ans)
+            | otherwise = case bestHint hist (8 - length hist) of
+                Nothing -> error ("Solver returned Nothing for " ++ name ans)
+                Just h ->
+                  let g = hintRoom h
+                   in if g == ans
+                        then turn
+                        else go ((g, guessRoom ans g) : hist) (turn + 1)
+      turnsList = map playGame allRooms
+      maxTurns = maximum turnsList
+      totalTurns = sum turnsList
+  assert ("solver max turns <= 4, got " ++ show maxTurns) (maxTurns <= 4)
+  assertEq "solver exact optimal total guesses across 110 rooms" 259 totalTurns
+
 main :: IO ()
 main = do
   hSetEncoding stdout utf8
@@ -174,4 +218,5 @@ main = do
   testGainRules
   testRoomScenarios
   testSetPartialMatch
+  testSolver
   putStrLn "All tests passed."

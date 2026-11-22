@@ -14,8 +14,10 @@ import Miso hiding ((!!))
 import Miso.Html.Element as H
 import Miso.Html.Event as E
 import Miso.Html.Property as P
+import Numeric (showFFloat)
 import Room
 import RoomList (allRooms)
+import Solver (HintResult (..), bestHint)
 import System.Random (randomRIO)
 
 #ifdef WASM
@@ -33,6 +35,7 @@ data Model = Model
     mGuesses :: [(Room, RoomGuessWithResult)],
     mInput :: MisoString,
     mError :: Maybe MisoString,
+    mHint :: Maybe HintResult,
     mStatus :: GameStatus,
     mMaxGuesses :: Int,
     mShowRooms :: Bool,
@@ -44,6 +47,8 @@ data Action
   = UpdateInput MisoString
   | SelectSuggestion MisoString
   | SubmitGuess
+  | RequestHint
+  | ApplyHint MisoString
   | GiveUp
   | NewGame
   | SetAnswer Room
@@ -72,6 +77,7 @@ initialModel ans =
       mGuesses = [],
       mInput = "",
       mError = Nothing,
+      mHint = Nothing,
       mStatus = Playing,
       mMaxGuesses = defaultMaxGuesses,
       mShowRooms = False,
@@ -108,13 +114,26 @@ updateModel = \case
                           { mGuesses = newGuesses,
                             mInput = "",
                             mError = Nothing,
+                            mHint = Nothing,
                             mStatus = newStatus
                           }
       _ -> pure ()
+  RequestHint ->
+    modify $ \m ->
+      if mStatus m == Playing
+        then
+          let remaining = mMaxGuesses m - length (mGuesses m)
+           in m {mHint = bestHint (mGuesses m) remaining, mError = Nothing}
+        else m
+  ApplyHint roomName ->
+    modify $ \m ->
+      if mStatus m == Playing
+        then m {mInput = roomName, mError = Nothing}
+        else m
   GiveUp ->
     modify $ \m ->
       if mStatus m == Playing
-        then m {mStatus = Lost, mError = Nothing}
+        then m {mStatus = Lost, mError = Nothing, mHint = Nothing}
         else m
   NewGame ->
     io (SetAnswer <$> pickRandomRoom)
@@ -167,6 +186,7 @@ viewModel m =
         [P.class_ "app-clamp"]
         [ viewStatusBanner m,
           viewGuessInput m,
+          viewHintBanner m,
           viewGuessesCard m,
           viewLegend
         ],
@@ -306,7 +326,16 @@ viewGuessInput m =
                   ]
                     ++ disabledAttr
                 )
-                [text "Guess"]
+                [text "Guess"],
+              H.button_
+                ( [ P.type_ "button",
+                    P.class_ "mie button",
+                    P.title_ "Suggest the optimal next room to guess",
+                    E.onClick RequestHint
+                  ]
+                    ++ disabledAttr
+                )
+                [text "Hint"]
             ],
           if showPopover
             then
@@ -315,6 +344,37 @@ viewGuessInput m =
                 (map viewSuggestionItem suggestions)
             else text ""
         ]
+
+viewHintBanner :: Model -> View c p Model Action
+viewHintBanner m = case (mStatus m, mHint m) of
+  (Playing, Just h) ->
+    let suggested = name (hintRoom h)
+        cands = hintCandidateCount h
+        candLabel = show cands ++ if cands == 1 then " possible room" else " possible rooms"
+        avgStr = showFFloat (Just 2) (hintExpectedGuesses h) ""
+        guaranteeStr =
+          if hintGuaranteed h
+            then "≤ " ++ show (hintWorstCase h) ++ (if hintWorstCase h == 1 then " guess" else " guesses") ++ " guaranteed"
+            else "best available (no guarantee in remaining guesses)"
+     in H.div_
+          [P.class_ "status-banner hint"]
+          [ H.div_
+              [P.class_ "hint-banner-text"]
+              [ H.span_
+                  [P.class_ "hint-banner-title"]
+                  [text (ms ("Hint: " ++ suggested))],
+                H.span_
+                  [P.class_ "hint-banner-meta"]
+                  [text (ms (candLabel ++ " · ~" ++ avgStr ++ " avg from here · " ++ guaranteeStr))]
+              ],
+            H.button_
+              [ P.type_ "button",
+                P.class_ "mie button",
+                E.onClick (ApplyHint (ms suggested))
+              ]
+              [text "Use Hint"]
+          ]
+  _ -> text ""
 
 viewSuggestionItem :: Room -> View c p Model Action
 viewSuggestionItem r =

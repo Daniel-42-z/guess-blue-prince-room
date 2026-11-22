@@ -341,6 +341,33 @@ input,
   border-color: rgba(229, 165, 10, 0.45);
 }
 
+.status-banner.hint {
+  max-width: 660px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background-color: rgba(53, 132, 228, 0.1);
+  border-color: rgba(53, 132, 228, 0.35);
+}
+
+.hint-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hint-banner-title {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.hint-banner-meta {
+  font-size: 13px;
+  color: var(--adw-fg-muted);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
 /* Input & Autocomplete */
 .guess-input-section {
   position: relative;
