@@ -16,6 +16,7 @@ foundation =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Permanent,
       resources = noResourceGain
     }
@@ -29,6 +30,7 @@ entranceHall =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Permanent,
       resources = noResourceGain
     }
@@ -41,7 +43,8 @@ spareRoom =
       shape = Straight,
       colors = singleton Blue,
       gemCost = 0,
-      poolCat = Upgradable,
+      poolCat = Starting,
+      upgradable = True,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -55,6 +58,7 @@ rotunda =
       colors = singleton Blue,
       gemCost = 3,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -67,7 +71,8 @@ parlor =
       shape = Corner,
       colors = singleton Blue,
       gemCost = 0,
-      poolCat = Upgradable,
+      poolCat = Starting,
+      upgradable = True,
       specialCats = singleton Puzzle,
       resources = resourceGains [(Gems, Fixed 2)]
     }
@@ -80,7 +85,8 @@ billiardRoom =
       shape = Corner,
       colors = singleton Blue,
       gemCost = 0,
-      poolCat = Upgradable,
+      poolCat = Starting,
+      upgradable = True,
       specialCats = singleton Puzzle,
       resources = resourceGains [(Keys, Fixed 2)]
     }
@@ -94,6 +100,7 @@ gallery =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Puzzle,
       resources = resourceGains [(Gems, Fixed 2), (Coins, Fixed 4), (Other, Fixed 1)]
     }
@@ -107,6 +114,7 @@ room8 =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Puzzle,
       resources = resourceGains [(Other, Fixed 1)]
     }
@@ -119,7 +127,8 @@ closet =
       shape = DeadEnd,
       colors = singleton Blue,
       gemCost = 0,
-      poolCat = Upgradable,
+      poolCat = Starting,
+      upgradable = True,
       specialCats = empty,
       resources = resourceGains [(Other, Fixed 2)]
     }
@@ -133,6 +142,7 @@ walkInCloset =
       colors = singleton Blue,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Other, Fixed 4)]
     }
@@ -146,6 +156,7 @@ attic =
       colors = singleton Blue,
       gemCost = 3,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Other, Fixed 8)]
     }
@@ -158,7 +169,8 @@ storeRoom =
       shape = DeadEnd,
       colors = singleton Blue,
       gemCost = 0,
-      poolCat = Upgradable,
+      poolCat = Starting,
+      upgradable = True,
       specialCats = empty,
       resources = resourceGains [(Coins, Fixed 1), (Gems, Fixed 1), (Keys, Fixed 1)]
     }
@@ -171,7 +183,8 @@ nook =
       shape = Corner,
       colors = singleton Blue,
       gemCost = 0,
-      poolCat = Upgradable,
+      poolCat = Starting,
+      upgradable = True,
       specialCats = empty,
       resources = resourceGains [(Keys, Fixed 1)]
     }
@@ -185,6 +198,7 @@ garage =
       colors = singleton Blue,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Keys, Fixed 3)]
     }
@@ -198,6 +212,7 @@ musicRoom =
       colors = singleton Blue,
       gemCost = 2,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Keys, Fixed 1), (Other, Fixed 1)]
     }
@@ -211,6 +226,7 @@ lockerRoom =
       colors = singleton Blue,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Spread,
       resources = resourceGains [(Keys, SpreadGain)]
     }
@@ -224,6 +240,7 @@ den =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Gems, Fixed 1)]
     }
@@ -237,6 +254,7 @@ wineCellar =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Gems, Fixed 3)]
     }
@@ -250,6 +268,7 @@ trophyRoom =
       colors = singleton Blue,
       gemCost = 5,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Gems, Fixed 8)]
     }
@@ -263,6 +282,7 @@ ballroom =
       colors = singleton Blue,
       gemCost = 2,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Entry,
       resources = resourceGains [(Gems, Mixed)]
     }
@@ -276,6 +296,7 @@ pantry =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Coins, Fixed 4), (Steps, VarGain)]
     }
@@ -289,6 +310,7 @@ rumpusRoom =
       colors = singleton Blue,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Coins, Fixed 8)]
     }
@@ -302,6 +324,7 @@ vault =
       colors = singleton Blue,
       gemCost = 3,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Coins, Fixed 40)]
     }
@@ -315,6 +338,7 @@ office =
       colors = singleton Blue,
       gemCost = 2,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Spread,
       resources = resourceGains [(Coins, SpreadGain)]
     }
@@ -328,6 +352,7 @@ drawingRoom =
       colors = singleton Blue,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Drafting,
       resources = noResourceGain
     }
@@ -341,6 +366,7 @@ study =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Drafting,
       resources = noResourceGain
     }
@@ -354,6 +380,7 @@ library =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Drafting,
       resources = noResourceGain
     }
@@ -367,6 +394,7 @@ chamberOfMirrors =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Drafting,
       resources = noResourceGain
     }
@@ -380,6 +408,7 @@ thePool =
       colors = singleton Blue,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Drafting,
       resources = noResourceGain
     }
@@ -393,6 +422,7 @@ draftingStudio =
       colors = singleton Blue,
       gemCost = 2,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Drafting,
       resources = noResourceGain
     }
@@ -406,6 +436,7 @@ utilityCloset =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Mechanical,
       resources = noResourceGain
     }
@@ -419,6 +450,7 @@ boilerRoom =
       colors = singleton Blue,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Mechanical,
       resources = noResourceGain
     }
@@ -432,6 +464,7 @@ pumpRoom =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Mechanical,
       resources = noResourceGain
     }
@@ -445,6 +478,7 @@ security =
       colors = singleton Blue,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Mechanical,
       resources = noResourceGain
     }
@@ -458,6 +492,7 @@ workshop =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Mechanical,
       resources = noResourceGain
     }
@@ -471,6 +506,7 @@ laboratory =
       colors = singleton Blue,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Mechanical,
       resources = noResourceGain
     }
@@ -484,6 +520,7 @@ sauna =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Tomorrow,
       resources = resourceGains [(Steps, Fixed 20)]
     }
@@ -497,6 +534,7 @@ coatCheck =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Tomorrow,
       resources = noResourceGain
     }
@@ -509,7 +547,8 @@ mailRoom =
       shape = DeadEnd,
       colors = singleton Blue,
       gemCost = 0,
-      poolCat = Upgradable,
+      poolCat = Starting,
+      upgradable = True,
       specialCats = singleton Tomorrow,
       resources = resourceGains [(Other, VarGain)]
     }
@@ -523,6 +562,7 @@ freezer =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Tomorrow,
       resources = noResourceGain
     }
@@ -536,6 +576,7 @@ diningRoom =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Steps, VarGain)]
     }
@@ -549,6 +590,7 @@ observatory =
       colors = singleton Blue,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Other, VarGain)]
     }
@@ -562,6 +604,7 @@ conferenceRoom =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Spread,
       resources = noResourceGain
     }
@@ -574,7 +617,8 @@ aquarium =
       shape = TShaped,
       colors = fromList [Blue, Red, GreenRoom, Hallway, Bedroom, Shop, Blackprint],
       gemCost = 1,
-      poolCat = Upgradable,
+      poolCat = Starting,
+      upgradable = True,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -588,6 +632,7 @@ antechamber =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Permanent,
       resources = resourceGains [(Other, Fixed 1)]
     }
@@ -601,6 +646,7 @@ room46 =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Permanent,
       resources = resourceGains [(Other, Fixed 1)]
     }
@@ -617,6 +663,7 @@ bedroom =
       colors = singleton Bedroom,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Entry,
       resources = resourceGains [(Steps, PerEntryGain)]
     }
@@ -628,7 +675,8 @@ boudoir =
       shape = Corner,
       colors = singleton Bedroom,
       gemCost = 0,
-      poolCat = Upgradable,
+      poolCat = Starting,
+      upgradable = True,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -640,7 +688,8 @@ guestBedroom =
       shape = DeadEnd,
       colors = singleton Bedroom,
       gemCost = 0,
-      poolCat = Upgradable,
+      poolCat = Starting,
+      upgradable = True,
       specialCats = empty,
       resources = resourceGains [(Steps, Fixed 10)]
     }
@@ -652,7 +701,8 @@ nursery =
       shape = DeadEnd,
       colors = singleton Bedroom,
       gemCost = 1,
-      poolCat = Upgradable,
+      poolCat = Starting,
+      upgradable = True,
       specialCats = singleton Drafting,
       resources = resourceGains [(Steps, VarGain), (Other, Fixed 1)]
     }
@@ -665,6 +715,7 @@ servantsQuarters =
       colors = singleton Bedroom,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Keys, VarGain)]
     }
@@ -676,7 +727,8 @@ bunkRoom =
       shape = DeadEnd,
       colors = singleton Bedroom,
       gemCost = 0,
-      poolCat = Upgradable,
+      poolCat = Starting,
+      upgradable = True,
       specialCats = empty,
       resources = resourceGains [(Other, Fixed 2)]
     }
@@ -689,6 +741,7 @@ herLadyshipsChamber =
       colors = singleton Bedroom,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Steps, VarGain), (Gems, VarGain)]
     }
@@ -701,6 +754,7 @@ masterBedroom =
       colors = singleton Bedroom,
       gemCost = 2,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Steps, VarGain)]
     }
@@ -716,7 +770,8 @@ hallway =
       shape = TShaped,
       colors = singleton Hallway,
       gemCost = 0,
-      poolCat = Upgradable,
+      poolCat = Starting,
+      upgradable = True,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -729,6 +784,7 @@ westWingHall =
       colors = singleton Hallway,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -741,6 +797,7 @@ eastWingHall =
       colors = singleton Hallway,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -753,6 +810,7 @@ corridor =
       colors = singleton Hallway,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -765,6 +823,7 @@ passageway =
       colors = singleton Hallway,
       gemCost = 2,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -777,6 +836,7 @@ secretPassage =
       colors = singleton Hallway,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -789,6 +849,7 @@ foyer =
       colors = singleton Hallway,
       gemCost = 2,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -801,6 +862,7 @@ greatHall =
       colors = singleton Hallway,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -817,6 +879,7 @@ terrace =
       colors = singleton GreenRoom,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Other, Fixed 1)]
     }
@@ -829,6 +892,7 @@ patio =
       colors = singleton GreenRoom,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Spread,
       resources = resourceGains [(Gems, SpreadGain)]
     }
@@ -840,7 +904,8 @@ courtyard =
       shape = TShaped,
       colors = singleton GreenRoom,
       gemCost = 1,
-      poolCat = Upgradable,
+      poolCat = Starting,
+      upgradable = True,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -852,7 +917,8 @@ cloister =
       shape = Crossroad,
       colors = singleton GreenRoom,
       gemCost = 3,
-      poolCat = Upgradable,
+      poolCat = Starting,
+      upgradable = True,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -865,6 +931,7 @@ veranda =
       colors = singleton GreenRoom,
       gemCost = 2,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -877,6 +944,7 @@ greenhouse =
       colors = singleton GreenRoom,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Drafting,
       resources = resourceGains [(Other, Fixed 1)]
     }
@@ -889,6 +957,7 @@ morningRoom =
       colors = singleton GreenRoom,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Tomorrow,
       resources = resourceGains [(Gems, Fixed 2)]
     }
@@ -901,6 +970,7 @@ secretGarden =
       colors = singleton GreenRoom,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Spread,
       resources = resourceGains [(Steps, SpreadGain)]
     }
@@ -917,6 +987,7 @@ commissary =
       colors = singleton Shop,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Steps, Purchase), (Gems, Purchase), (Keys, Purchase), (Other, Purchase)]
     }
@@ -929,6 +1000,7 @@ kitchen =
       colors = singleton Shop,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Steps, Purchase)]
     }
@@ -941,6 +1013,7 @@ locksmith =
       colors = singleton Shop,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Keys, Purchase), (Other, Purchase)]
     }
@@ -953,6 +1026,7 @@ showroom =
       colors = singleton Shop,
       gemCost = 2,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Other, Purchase)]
     }
@@ -965,6 +1039,7 @@ laundryRoom =
       colors = singleton Shop,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Steps, Purchase), (Coins, Purchase), (Gems, Purchase), (Keys, Purchase), (Other, Purchase)]
     }
@@ -977,6 +1052,7 @@ bookshop =
       colors = singleton Shop,
       gemCost = 1,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -989,6 +1065,7 @@ theArmory =
       colors = fromList [Shop, Blackprint],
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Other, Purchase)]
     }
@@ -1001,6 +1078,7 @@ giftShop =
       colors = singleton Shop,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -1017,6 +1095,7 @@ lavatory =
       colors = singleton Red,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -1029,6 +1108,7 @@ chapel =
       colors = singleton Red,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Entry,
       resources = resourceGains [(Coins, PerEntryLoss)]
     }
@@ -1041,6 +1121,7 @@ maidsChamber =
       colors = fromList [Bedroom, Red],
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -1053,6 +1134,7 @@ archives =
       colors = singleton Red,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -1065,6 +1147,7 @@ gymnasium =
       colors = singleton Red,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = singleton Entry,
       resources = resourceGains [(Steps, PerEntryLoss)]
     }
@@ -1077,6 +1160,7 @@ darkroom =
       colors = singleton Red,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -1089,6 +1173,7 @@ weightRoom =
       colors = singleton Red,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Steps, VarLoss)]
     }
@@ -1101,6 +1186,7 @@ furnace =
       colors = singleton Red,
       gemCost = 0,
       poolCat = Starting,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -1117,6 +1203,7 @@ dovecote =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Studio,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -1129,6 +1216,7 @@ theKennel =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Studio,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -1141,6 +1229,7 @@ clockTower =
       colors = singleton Blue,
       gemCost = 1,
       poolCat = Studio,
+      upgradable = False,
       specialCats = singleton Tomorrow,
       resources = resourceGains [(Keys, VarGain)]
     }
@@ -1153,6 +1242,7 @@ classroom =
       colors = singleton Blue,
       gemCost = 1,
       poolCat = Studio,
+      upgradable = False,
       specialCats = singleton Drafting,
       resources = resourceGains [(Steps, Fixed 2)]
     }
@@ -1165,6 +1255,7 @@ solarium =
       colors = singleton GreenRoom,
       gemCost = 1,
       poolCat = Studio,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -1177,6 +1268,7 @@ dormitory =
       colors = singleton Bedroom,
       gemCost = 0,
       poolCat = Studio,
+      upgradable = False,
       specialCats = singleton Entry,
       resources = resourceGains [(Steps, PerEntryGain)]
     }
@@ -1189,6 +1281,7 @@ vestibule =
       colors = singleton Hallway,
       gemCost = 2,
       poolCat = Studio,
+      upgradable = False,
       specialCats = singleton Entry,
       resources = noResourceGain
     }
@@ -1201,6 +1294,7 @@ casino =
       colors = singleton Shop,
       gemCost = 2,
       poolCat = Studio,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains $ (Coins, Mixed) : (zip [Steps, Gems, Keys, Other] (repeat VarGain))
     }
@@ -1217,6 +1311,7 @@ planetarium =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Found,
+      upgradable = False,
       specialCats = singleton Tomorrow,
       resources = resourceGains [(Other, VarGain)]
     }
@@ -1229,6 +1324,7 @@ mechanarium =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Found,
+      upgradable = False,
       specialCats = singleton Mechanical,
       resources = noResourceGain
     }
@@ -1241,6 +1337,7 @@ treasureTrove =
       colors = singleton Blackprint,
       gemCost = 1,
       poolCat = Found,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Coins, VarGain)]
     }
@@ -1253,6 +1350,7 @@ throneRoom =
       colors = singleton Blackprint,
       gemCost = 5,
       poolCat = Found,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -1265,6 +1363,7 @@ tunnel =
       colors = singleton Hallway,
       gemCost = 0,
       poolCat = Found,
+      upgradable = False,
       specialCats = singleton Drafting,
       resources = noResourceGain
     }
@@ -1277,6 +1376,7 @@ conservatory =
       colors = singleton GreenRoom,
       gemCost = 1,
       poolCat = Found,
+      upgradable = False,
       specialCats = singleton Drafting,
       resources = noResourceGain
     }
@@ -1289,6 +1389,7 @@ lostAndFound =
       colors = singleton Red,
       gemCost = 0,
       poolCat = Found,
+      upgradable = False,
       specialCats = singleton Entry,
       resources = resourceGains [(Other, Mixed)]
     }
@@ -1301,6 +1402,7 @@ closedExhibit =
       colors = singleton Red,
       gemCost = 0,
       poolCat = Found,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -1317,6 +1419,7 @@ toolshed =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Outer,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Other, Fixed 2)]
     }
@@ -1329,6 +1432,7 @@ shelter =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Outer,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -1341,6 +1445,7 @@ schoolhouse =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Outer,
+      upgradable = False,
       specialCats = singleton Drafting,
       resources = noResourceGain
     }
@@ -1353,6 +1458,7 @@ shrine =
       colors = singleton Blue,
       gemCost = 0,
       poolCat = Outer,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Coins, VarLoss), (Other, VarGain)]
     }
@@ -1365,6 +1471,7 @@ rootCellar =
       colors = singleton GreenRoom,
       gemCost = 0,
       poolCat = Outer,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -1377,6 +1484,7 @@ hovel =
       colors = singleton Bedroom,
       gemCost = 0,
       poolCat = Outer,
+      upgradable = False,
       specialCats = empty,
       resources = resourceGains [(Steps, VarLoss)]
     }
@@ -1389,6 +1497,7 @@ tradingPost =
       colors = singleton Shop,
       gemCost = 0,
       poolCat = Outer,
+      upgradable = False,
       specialCats = empty,
       resources = noResourceGain
     }
@@ -1401,6 +1510,7 @@ tomb =
       colors = singleton Blackprint,
       gemCost = 0,
       poolCat = Outer,
+      upgradable = False,
       specialCats = singleton Spread,
       resources = resourceGains [(Coins, SpreadGain)]
     }

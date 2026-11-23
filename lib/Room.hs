@@ -27,7 +27,7 @@ instance GuessField Color
 
 type GemCost = Int
 
-data PoolCategory = Starting | Found | Outer | Studio | Upgradable deriving (Eq, Ord, Show)
+data PoolCategory = Starting | Found | Outer | Studio deriving (Eq, Ord, Show)
 
 instance GuessField PoolCategory
 
@@ -115,6 +115,7 @@ data Room = Room
     colors :: Set Color,
     gemCost :: GemCost,
     poolCat :: PoolCategory,
+    upgradable :: Bool,
     specialCats :: Set SpecialCategory,
     resources :: Map Resource Gain
   }
@@ -125,6 +126,7 @@ data RoomGuessWithResult = RoomGuessWithResult
     colorsWithResult :: (Set Color, Result),
     gemCostWithResult :: (GemCost, Result, Ordering),
     poolCatWithResult :: (PoolCategory, Result),
+    upgradableWithResult :: (Bool, Result),
     specialCatsWithResult :: (Set SpecialCategory, Result),
     resourcesWithResult :: Map Resource (Gain, Result, PartialOrdering)
   }
@@ -137,6 +139,7 @@ guessRoom ans guess =
       colorsWithResult = (colors guess, check (colors ans) (colors guess)),
       gemCostWithResult = (gemCost guess, check (gemCost ans) (gemCost guess), compare (gemCost ans) (gemCost guess)),
       poolCatWithResult = (poolCat guess, check (poolCat ans) (poolCat guess)),
+      upgradableWithResult = (upgradable guess, check (upgradable ans) (upgradable guess)),
       specialCatsWithResult = (specialCats guess, check (specialCats ans) (specialCats guess)),
       resourcesWithResult = checkResources (resources ans) (resources guess)
     }

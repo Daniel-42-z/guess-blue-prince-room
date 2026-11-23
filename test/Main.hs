@@ -167,6 +167,16 @@ testSetPartialMatch = do
   assertEq "Set overlapping match" Partial (check s1 s2)
   assertEq "Set disjoint match" Wrong (check s1 s3)
 
+testPoolAndUpgradable :: IO ()
+testPoolAndUpgradable = do
+  assertEq "PoolCategory exact match" Correct (check Starting Starting)
+  assertEq "PoolCategory mismatch" Wrong (check Starting Found)
+  assertEq "Upgradable exact match" Correct (check True True)
+  assertEq "Upgradable mismatch" Wrong (check True False)
+  let res = guessRoom foundation spareRoom
+  assertEq "Spare Room poolCat is Starting (Correct vs Foundation)" (Starting, Correct) (poolCatWithResult res)
+  assertEq "Spare Room upgradable is True (Wrong vs Foundation)" (True, Wrong) (upgradableWithResult res)
+
 testSolver :: IO ()
 testSolver = do
   -- Opening hint should be optimal (avg 259/110, max 4, guaranteed within 8)
@@ -218,5 +228,6 @@ main = do
   testGainRules
   testRoomScenarios
   testSetPartialMatch
+  testPoolAndUpgradable
   testSolver
   putStrLn "All tests passed."

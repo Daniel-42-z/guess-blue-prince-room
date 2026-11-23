@@ -13,11 +13,11 @@ instance Show Result where
 
 class (Eq a) => GuessField a where
   check :: a -> a -> Result
-  check ans guess = case guess == ans of
-    True -> Correct
-    False -> Wrong
+  check ans guess = if guess == ans then Correct else Wrong
 
 instance GuessField Int
+
+instance GuessField Bool
 
 instance (Eq a, Ord a) => GuessField (Set a) where
   check ans guess

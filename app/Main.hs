@@ -147,19 +147,21 @@ printGuessResult guess res = do
       (cols, colsRes) = colorsWithResult res
       (gems, gemsRes, gemsOrd) = gemCostWithResult res
       (pool, poolRes) = poolCatWithResult res
+      (upg, upgRes) = upgradableWithResult res
       (specs, specsRes) = specialCatsWithResult res
       resEntries =
         [ formatResourceEntry r entry
           | r <- [minBound .. maxBound],
             Just entry <- [Map.lookup r (resourcesWithResult res)]
         ]
-  putStrLn ("  Room:    " ++ name guess)
-  putStrLn ("  Shape:   " ++ show shpRes ++ " " ++ show shp)
-  putStrLn ("  Colors:  " ++ show colsRes ++ " " ++ formatSet cols)
-  putStrLn ("  Gems:    " ++ show gemsRes ++ " " ++ show gems ++ formatOrdering gemsOrd)
-  putStrLn ("  Pool:    " ++ show poolRes ++ " " ++ show pool)
-  putStrLn ("  Special: " ++ show specsRes ++ " " ++ formatSet specs)
-  putStrLn ("  Res:     " ++ intercalate " | " resEntries)
+  putStrLn ("  Room:       " ++ name guess)
+  putStrLn ("  Shape:      " ++ show shpRes ++ " " ++ show shp)
+  putStrLn ("  Colors:     " ++ show colsRes ++ " " ++ formatSet cols)
+  putStrLn ("  Gems:       " ++ show gemsRes ++ " " ++ show gems ++ formatOrdering gemsOrd)
+  putStrLn ("  Pool:       " ++ show poolRes ++ " " ++ show pool)
+  putStrLn ("  Upgradable: " ++ show upgRes ++ " " ++ if upg then "Yes" else "No")
+  putStrLn ("  Special:    " ++ show specsRes ++ " " ++ formatSet specs)
+  putStrLn ("  Res:        " ++ intercalate " | " resEntries)
 
 readLineSafe :: IO (Maybe String)
 readLineSafe =

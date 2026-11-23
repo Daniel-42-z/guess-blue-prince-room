@@ -422,7 +422,8 @@ viewTableHeader =
           viewHelpHeader
             "Pool"
             "Pool options"
-            ["Starting", "Found", "Outer", "Studio", "Upgradable"],
+            ["Starting", "Found", "Outer", "Studio"],
+          H.th_ [] [text "Upgradable"],
           viewHelpHeader
             "Special"
             "Special categories"
@@ -469,6 +470,7 @@ viewGuessRow guess res =
       (cols, colsRes) = colorsWithResult res
       (gems, gemsRes, gemsOrd) = gemCostWithResult res
       (pool, poolRes) = poolCatWithResult res
+      (upg, upgRes) = upgradableWithResult res
       (specs, specsRes) = specialCatsWithResult res
       resCell r = case Map.lookup r (resourcesWithResult res) of
         Nothing -> H.td_ [] [text "-"]
@@ -485,6 +487,7 @@ viewGuessRow guess res =
           H.td_ [] [viewBadge colsRes (formatSet cols)],
           H.td_ [] [viewBadge gemsRes (show gems ++ formatOrd gemsOrd)],
           H.td_ [] [viewBadge poolRes (show pool)],
+          H.td_ [] [viewBadge upgRes (if upg then "Yes" else "No")],
           H.td_ [] [viewBadge specsRes (formatSet specs)],
           resCell Steps,
           resCell Coins,
@@ -577,5 +580,5 @@ viewRoomChip r =
     [ H.span_ [] [text (ms (name r))],
       H.span_
         [P.class_ "room-chip-sub"]
-        [text (ms (show (shape r) ++ " · " ++ show (poolCat r) ++ " · " ++ show (gemCost r) ++ "💎"))]
+        [text (ms (show (shape r) ++ " · " ++ show (poolCat r) ++ (if upgradable r then " · Upgradable" else "") ++ " · " ++ show (gemCost r) ++ "💎"))]
     ]
