@@ -95,7 +95,7 @@ gallery =
       gemCost = 0,
       poolCat = Starting,
       specialCats = singleton Puzzle,
-      resources = noResourceGain
+      resources = resourceGains [(Gems, Fixed 2), (Coins, Fixed 4), (Other, Fixed 1)]
     }
 
 -- 008
