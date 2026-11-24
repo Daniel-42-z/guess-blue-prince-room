@@ -116,7 +116,7 @@ data Room = Room
     gemCost :: GemCost,
     poolCat :: PoolCategory,
     upgradable :: Bool,
-    specialCats :: Set SpecialCategory,
+    specialCat :: SpecialCategory,
     resources :: Map Resource Gain
   }
   deriving (Eq)
@@ -127,7 +127,7 @@ data RoomGuessWithResult = RoomGuessWithResult
     gemCostWithResult :: (GemCost, Result, Ordering),
     poolCatWithResult :: (PoolCategory, Result),
     upgradableWithResult :: (Bool, Result),
-    specialCatsWithResult :: (Set SpecialCategory, Result),
+    specialCatWithResult :: (SpecialCategory, Result),
     resourcesWithResult :: Map Resource (Gain, Result, PartialOrdering)
   }
   deriving (Eq, Ord)
@@ -140,6 +140,6 @@ guessRoom ans guess =
       gemCostWithResult = (gemCost guess, check (gemCost ans) (gemCost guess), compare (gemCost ans) (gemCost guess)),
       poolCatWithResult = (poolCat guess, check (poolCat ans) (poolCat guess)),
       upgradableWithResult = (upgradable guess, check (upgradable ans) (upgradable guess)),
-      specialCatsWithResult = (specialCats guess, check (specialCats ans) (specialCats guess)),
+      specialCatWithResult = (specialCat guess, check (specialCat ans) (specialCat guess)),
       resourcesWithResult = checkResources (resources ans) (resources guess)
     }

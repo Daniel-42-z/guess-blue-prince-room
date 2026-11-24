@@ -148,7 +148,7 @@ printGuessResult guess res = do
       (gems, gemsRes, gemsOrd) = gemCostWithResult res
       (pool, poolRes) = poolCatWithResult res
       (upg, upgRes) = upgradableWithResult res
-      (specs, specsRes) = specialCatsWithResult res
+      (spec, specRes) = specialCatWithResult res
       resEntries =
         [ formatResourceEntry r entry
           | r <- [minBound .. maxBound],
@@ -160,7 +160,7 @@ printGuessResult guess res = do
   putStrLn ("  Gems:       " ++ show gemsRes ++ " " ++ show gems ++ formatOrdering gemsOrd)
   putStrLn ("  Pool:       " ++ show poolRes ++ " " ++ show pool)
   putStrLn ("  Upgradable: " ++ show upgRes ++ " " ++ if upg then "Yes" else "No")
-  putStrLn ("  Special:    " ++ show specsRes ++ " " ++ formatSet specs)
+  putStrLn ("  Special:    " ++ show specRes ++ " " ++ show spec)
   putStrLn ("  Res:        " ++ intercalate " | " resEntries)
 
 readLineSafe :: IO (Maybe String)

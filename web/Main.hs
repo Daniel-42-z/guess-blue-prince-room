@@ -471,7 +471,7 @@ viewGuessRow guess res =
       (gems, gemsRes, gemsOrd) = gemCostWithResult res
       (pool, poolRes) = poolCatWithResult res
       (upg, upgRes) = upgradableWithResult res
-      (specs, specsRes) = specialCatsWithResult res
+      (spec, specRes) = specialCatWithResult res
       resCell r = case Map.lookup r (resourcesWithResult res) of
         Nothing -> H.td_ [] [text "-"]
         Just (gain, rRes, pOrd) ->
@@ -488,7 +488,7 @@ viewGuessRow guess res =
           H.td_ [] [viewBadge gemsRes (show gems ++ formatOrd gemsOrd)],
           H.td_ [] [viewBadge poolRes (show pool)],
           H.td_ [] [viewBadge upgRes (if upg then "Yes" else "No")],
-          H.td_ [] [viewBadge specsRes (formatSet specs)],
+          H.td_ [] [viewBadge specRes (show spec)],
           resCell Steps,
           resCell Coins,
           resCell Gems,

@@ -1,6 +1,6 @@
 module RoomList where
 
-import Data.Set (empty, fromList, singleton)
+import Data.Set (fromList, singleton)
 import Room
 
 -- ============================================================================
@@ -17,7 +17,7 @@ foundation =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Permanent,
+      specialCat = Permanent,
       resources = noResourceGain
     }
 
@@ -31,7 +31,7 @@ entranceHall =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Permanent,
+      specialCat = Permanent,
       resources = noResourceGain
     }
 
@@ -45,7 +45,7 @@ spareRoom =
       gemCost = 0,
       poolCat = Starting,
       upgradable = True,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -59,7 +59,7 @@ rotunda =
       gemCost = 3,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -73,7 +73,7 @@ parlor =
       gemCost = 0,
       poolCat = Starting,
       upgradable = True,
-      specialCats = singleton Puzzle,
+      specialCat = Puzzle,
       resources = resourceGains [(Gems, Fixed 2)]
     }
 
@@ -87,7 +87,7 @@ billiardRoom =
       gemCost = 0,
       poolCat = Starting,
       upgradable = True,
-      specialCats = singleton Puzzle,
+      specialCat = Puzzle,
       resources = resourceGains [(Keys, Fixed 2)]
     }
 
@@ -101,7 +101,7 @@ gallery =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Puzzle,
+      specialCat = Puzzle,
       resources = resourceGains [(Gems, Fixed 2), (Coins, Fixed 4), (Other, Fixed 1)]
     }
 
@@ -115,7 +115,7 @@ room8 =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Puzzle,
+      specialCat = Puzzle,
       resources = resourceGains [(Other, Fixed 1)]
     }
 
@@ -129,7 +129,7 @@ closet =
       gemCost = 0,
       poolCat = Starting,
       upgradable = True,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Other, Fixed 2)]
     }
 
@@ -143,7 +143,7 @@ walkInCloset =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Other, Fixed 4)]
     }
 
@@ -157,7 +157,7 @@ attic =
       gemCost = 3,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Other, Fixed 8)]
     }
 
@@ -171,7 +171,7 @@ storeRoom =
       gemCost = 0,
       poolCat = Starting,
       upgradable = True,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Coins, Fixed 1), (Gems, Fixed 1), (Keys, Fixed 1)]
     }
 
@@ -185,7 +185,7 @@ nook =
       gemCost = 0,
       poolCat = Starting,
       upgradable = True,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Keys, Fixed 1)]
     }
 
@@ -199,7 +199,7 @@ garage =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Keys, Fixed 3)]
     }
 
@@ -213,7 +213,7 @@ musicRoom =
       gemCost = 2,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Keys, Fixed 1), (Other, Fixed 1)]
     }
 
@@ -227,7 +227,7 @@ lockerRoom =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Spread,
+      specialCat = Spread,
       resources = resourceGains [(Keys, SpreadGain)]
     }
 
@@ -241,7 +241,7 @@ den =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Gems, Fixed 1)]
     }
 
@@ -255,7 +255,7 @@ wineCellar =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Gems, Fixed 3)]
     }
 
@@ -269,7 +269,7 @@ trophyRoom =
       gemCost = 5,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Gems, Fixed 8)]
     }
 
@@ -283,7 +283,7 @@ ballroom =
       gemCost = 2,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Entry,
+      specialCat = Entry,
       resources = resourceGains [(Gems, Mixed)]
     }
 
@@ -297,7 +297,7 @@ pantry =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Coins, Fixed 4), (Steps, VarGain)]
     }
 
@@ -311,7 +311,7 @@ rumpusRoom =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Coins, Fixed 8)]
     }
 
@@ -325,7 +325,7 @@ vault =
       gemCost = 3,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Coins, Fixed 40)]
     }
 
@@ -339,7 +339,7 @@ office =
       gemCost = 2,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Spread,
+      specialCat = Spread,
       resources = resourceGains [(Coins, SpreadGain)]
     }
 
@@ -353,7 +353,7 @@ drawingRoom =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Drafting,
+      specialCat = Drafting,
       resources = noResourceGain
     }
 
@@ -367,7 +367,7 @@ study =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Drafting,
+      specialCat = Drafting,
       resources = noResourceGain
     }
 
@@ -381,7 +381,7 @@ library =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Drafting,
+      specialCat = Drafting,
       resources = noResourceGain
     }
 
@@ -395,7 +395,7 @@ chamberOfMirrors =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Drafting,
+      specialCat = Drafting,
       resources = noResourceGain
     }
 
@@ -409,7 +409,7 @@ thePool =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Drafting,
+      specialCat = Drafting,
       resources = noResourceGain
     }
 
@@ -423,7 +423,7 @@ draftingStudio =
       gemCost = 2,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Drafting,
+      specialCat = Drafting,
       resources = noResourceGain
     }
 
@@ -437,7 +437,7 @@ utilityCloset =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Mechanical,
+      specialCat = Mechanical,
       resources = noResourceGain
     }
 
@@ -451,7 +451,7 @@ boilerRoom =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Mechanical,
+      specialCat = Mechanical,
       resources = noResourceGain
     }
 
@@ -465,7 +465,7 @@ pumpRoom =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Mechanical,
+      specialCat = Mechanical,
       resources = noResourceGain
     }
 
@@ -479,7 +479,7 @@ security =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Mechanical,
+      specialCat = Mechanical,
       resources = noResourceGain
     }
 
@@ -493,7 +493,7 @@ workshop =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Mechanical,
+      specialCat = Mechanical,
       resources = noResourceGain
     }
 
@@ -507,7 +507,7 @@ laboratory =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Mechanical,
+      specialCat = Mechanical,
       resources = noResourceGain
     }
 
@@ -521,7 +521,7 @@ sauna =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Tomorrow,
+      specialCat = Tomorrow,
       resources = resourceGains [(Steps, Fixed 20)]
     }
 
@@ -535,7 +535,7 @@ coatCheck =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Tomorrow,
+      specialCat = Tomorrow,
       resources = noResourceGain
     }
 
@@ -549,7 +549,7 @@ mailRoom =
       gemCost = 0,
       poolCat = Starting,
       upgradable = True,
-      specialCats = singleton Tomorrow,
+      specialCat = Tomorrow,
       resources = resourceGains [(Other, VarGain)]
     }
 
@@ -563,7 +563,7 @@ freezer =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Tomorrow,
+      specialCat = Tomorrow,
       resources = noResourceGain
     }
 
@@ -577,7 +577,7 @@ diningRoom =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Steps, VarGain)]
     }
 
@@ -591,7 +591,7 @@ observatory =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Other, VarGain)]
     }
 
@@ -605,7 +605,7 @@ conferenceRoom =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Spread,
+      specialCat = Spread,
       resources = noResourceGain
     }
 
@@ -619,7 +619,7 @@ aquarium =
       gemCost = 1,
       poolCat = Starting,
       upgradable = True,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -633,7 +633,7 @@ antechamber =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Permanent,
+      specialCat = Permanent,
       resources = resourceGains [(Other, Fixed 1)]
     }
 
@@ -647,7 +647,7 @@ room46 =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Permanent,
+      specialCat = Permanent,
       resources = resourceGains [(Other, Fixed 1)]
     }
 
@@ -664,7 +664,7 @@ bedroom =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Entry,
+      specialCat = Entry,
       resources = resourceGains [(Steps, PerEntryGain)]
     }
 
@@ -677,7 +677,7 @@ boudoir =
       gemCost = 0,
       poolCat = Starting,
       upgradable = True,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -690,7 +690,7 @@ guestBedroom =
       gemCost = 0,
       poolCat = Starting,
       upgradable = True,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Steps, Fixed 10)]
     }
 
@@ -703,7 +703,7 @@ nursery =
       gemCost = 1,
       poolCat = Starting,
       upgradable = True,
-      specialCats = singleton Drafting,
+      specialCat = Drafting,
       resources = resourceGains [(Steps, VarGain), (Other, Fixed 1)]
     }
 
@@ -716,7 +716,7 @@ servantsQuarters =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Keys, VarGain)]
     }
 
@@ -729,7 +729,7 @@ bunkRoom =
       gemCost = 0,
       poolCat = Starting,
       upgradable = True,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Other, Fixed 2)]
     }
 
@@ -742,7 +742,7 @@ herLadyshipsChamber =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Steps, VarGain), (Gems, VarGain)]
     }
 
@@ -755,7 +755,7 @@ masterBedroom =
       gemCost = 2,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Steps, VarGain)]
     }
 
@@ -772,7 +772,7 @@ hallway =
       gemCost = 0,
       poolCat = Starting,
       upgradable = True,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -785,7 +785,7 @@ westWingHall =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -798,7 +798,7 @@ eastWingHall =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -811,7 +811,7 @@ corridor =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -824,7 +824,7 @@ passageway =
       gemCost = 2,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -837,7 +837,7 @@ secretPassage =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -850,7 +850,7 @@ foyer =
       gemCost = 2,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -863,7 +863,7 @@ greatHall =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -880,7 +880,7 @@ terrace =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Other, Fixed 1)]
     }
 
@@ -893,7 +893,7 @@ patio =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Spread,
+      specialCat = Spread,
       resources = resourceGains [(Gems, SpreadGain)]
     }
 
@@ -906,7 +906,7 @@ courtyard =
       gemCost = 1,
       poolCat = Starting,
       upgradable = True,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -919,7 +919,7 @@ cloister =
       gemCost = 3,
       poolCat = Starting,
       upgradable = True,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -932,7 +932,7 @@ veranda =
       gemCost = 2,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -945,7 +945,7 @@ greenhouse =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Drafting,
+      specialCat = Drafting,
       resources = resourceGains [(Other, Fixed 1)]
     }
 
@@ -958,7 +958,7 @@ morningRoom =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Tomorrow,
+      specialCat = Tomorrow,
       resources = resourceGains [(Gems, Fixed 2)]
     }
 
@@ -971,7 +971,7 @@ secretGarden =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Spread,
+      specialCat = Spread,
       resources = resourceGains [(Steps, SpreadGain)]
     }
 
@@ -988,7 +988,7 @@ commissary =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Steps, Purchase), (Gems, Purchase), (Keys, Purchase), (Other, Purchase)]
     }
 
@@ -1001,7 +1001,7 @@ kitchen =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Steps, Purchase)]
     }
 
@@ -1014,7 +1014,7 @@ locksmith =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Keys, Purchase), (Other, Purchase)]
     }
 
@@ -1027,7 +1027,7 @@ showroom =
       gemCost = 2,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Other, Purchase)]
     }
 
@@ -1040,7 +1040,7 @@ laundryRoom =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Steps, Purchase), (Coins, Purchase), (Gems, Purchase), (Keys, Purchase), (Other, Purchase)]
     }
 
@@ -1053,7 +1053,7 @@ bookshop =
       gemCost = 1,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -1066,7 +1066,7 @@ theArmory =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Other, Purchase)]
     }
 
@@ -1079,7 +1079,7 @@ giftShop =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -1096,7 +1096,7 @@ lavatory =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -1109,7 +1109,7 @@ chapel =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Entry,
+      specialCat = Entry,
       resources = resourceGains [(Coins, PerEntryLoss)]
     }
 
@@ -1122,7 +1122,7 @@ maidsChamber =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -1135,7 +1135,7 @@ archives =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -1148,7 +1148,7 @@ gymnasium =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = singleton Entry,
+      specialCat = Entry,
       resources = resourceGains [(Steps, PerEntryLoss)]
     }
 
@@ -1161,7 +1161,7 @@ darkroom =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -1174,7 +1174,7 @@ weightRoom =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Steps, VarLoss)]
     }
 
@@ -1187,7 +1187,7 @@ furnace =
       gemCost = 0,
       poolCat = Starting,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -1204,7 +1204,7 @@ dovecote =
       gemCost = 0,
       poolCat = Studio,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -1217,7 +1217,7 @@ theKennel =
       gemCost = 0,
       poolCat = Studio,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -1230,7 +1230,7 @@ clockTower =
       gemCost = 1,
       poolCat = Studio,
       upgradable = False,
-      specialCats = singleton Tomorrow,
+      specialCat = Tomorrow,
       resources = resourceGains [(Keys, VarGain)]
     }
 
@@ -1243,7 +1243,7 @@ classroom =
       gemCost = 1,
       poolCat = Studio,
       upgradable = False,
-      specialCats = singleton Drafting,
+      specialCat = Drafting,
       resources = resourceGains [(Steps, Fixed 2)]
     }
 
@@ -1256,7 +1256,7 @@ solarium =
       gemCost = 1,
       poolCat = Studio,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -1269,7 +1269,7 @@ dormitory =
       gemCost = 0,
       poolCat = Studio,
       upgradable = False,
-      specialCats = singleton Entry,
+      specialCat = Entry,
       resources = resourceGains [(Steps, PerEntryGain)]
     }
 
@@ -1282,7 +1282,7 @@ vestibule =
       gemCost = 2,
       poolCat = Studio,
       upgradable = False,
-      specialCats = singleton Entry,
+      specialCat = Entry,
       resources = noResourceGain
     }
 
@@ -1295,7 +1295,7 @@ casino =
       gemCost = 2,
       poolCat = Studio,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains $ (Coins, Mixed) : (zip [Steps, Gems, Keys, Other] (repeat VarGain))
     }
 
@@ -1312,7 +1312,7 @@ planetarium =
       gemCost = 0,
       poolCat = Found,
       upgradable = False,
-      specialCats = singleton Tomorrow,
+      specialCat = Tomorrow,
       resources = resourceGains [(Other, VarGain)]
     }
 
@@ -1325,7 +1325,7 @@ mechanarium =
       gemCost = 0,
       poolCat = Found,
       upgradable = False,
-      specialCats = singleton Mechanical,
+      specialCat = Mechanical,
       resources = noResourceGain
     }
 
@@ -1338,7 +1338,7 @@ treasureTrove =
       gemCost = 1,
       poolCat = Found,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Coins, VarGain)]
     }
 
@@ -1351,7 +1351,7 @@ throneRoom =
       gemCost = 5,
       poolCat = Found,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -1364,7 +1364,7 @@ tunnel =
       gemCost = 0,
       poolCat = Found,
       upgradable = False,
-      specialCats = singleton Drafting,
+      specialCat = Drafting,
       resources = noResourceGain
     }
 
@@ -1377,7 +1377,7 @@ conservatory =
       gemCost = 1,
       poolCat = Found,
       upgradable = False,
-      specialCats = singleton Drafting,
+      specialCat = Drafting,
       resources = noResourceGain
     }
 
@@ -1390,7 +1390,7 @@ lostAndFound =
       gemCost = 0,
       poolCat = Found,
       upgradable = False,
-      specialCats = singleton Entry,
+      specialCat = Entry,
       resources = resourceGains [(Other, Mixed)]
     }
 
@@ -1403,7 +1403,7 @@ closedExhibit =
       gemCost = 0,
       poolCat = Found,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -1420,7 +1420,7 @@ toolshed =
       gemCost = 0,
       poolCat = Outer,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Other, Fixed 2)]
     }
 
@@ -1433,7 +1433,7 @@ shelter =
       gemCost = 0,
       poolCat = Outer,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -1446,7 +1446,7 @@ schoolhouse =
       gemCost = 0,
       poolCat = Outer,
       upgradable = False,
-      specialCats = singleton Drafting,
+      specialCat = Drafting,
       resources = noResourceGain
     }
 
@@ -1459,7 +1459,7 @@ shrine =
       gemCost = 0,
       poolCat = Outer,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Coins, VarLoss), (Other, VarGain)]
     }
 
@@ -1472,7 +1472,7 @@ rootCellar =
       gemCost = 0,
       poolCat = Outer,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -1485,7 +1485,7 @@ hovel =
       gemCost = 0,
       poolCat = Outer,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = resourceGains [(Steps, VarLoss)]
     }
 
@@ -1498,7 +1498,7 @@ tradingPost =
       gemCost = 0,
       poolCat = Outer,
       upgradable = False,
-      specialCats = empty,
+      specialCat = None,
       resources = noResourceGain
     }
 
@@ -1511,7 +1511,7 @@ tomb =
       gemCost = 0,
       poolCat = Outer,
       upgradable = False,
-      specialCats = singleton Spread,
+      specialCat = Spread,
       resources = resourceGains [(Coins, SpreadGain)]
     }
 
